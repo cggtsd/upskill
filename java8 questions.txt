@@ -1,0 +1,14 @@
+employees.stream().sorted(Comparator.comparingr(Employee::getSalary())
+.reversed()).findFirst().orElse(null);
+
+
+=====================
+employees.stream().
+collect(Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary));
+==============================
+employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)).
+values().stream().map(e->e.stream().max(Compartor.comparingDouble(Employee::getSalary))
+.orElse(null).collect(Collectors.toList()).
+forEach(System.out::println)
+
+

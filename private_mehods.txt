@@ -1,0 +1,6 @@
+4 key points to be remembered:
+
+1.private methods in interface cannot be abstract.
+2.private methods whether static/non-static can be used only inside interface.
+3.private static method can be used inside other static and non-static interface method.
+4.private non-static methods cannot be used inside the private static method.

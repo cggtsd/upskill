@@ -1,0 +1,27 @@
+what is a stream
+------------------
+A stream represents a sequence of objects from a source which supports aggregate operations
+
+stream has certain characteristics
+
+1.sequence of elements - provides a set of elements of a specific type in a sequential manner
+ gets or computes elements on demand.It never stores the elements
+2.source:- takes arrays ,collections ,io sources as input source
+3.aggregate operations:- supports aggregate operations like filter ,map,limit,reduce,find,match and so on.
+
+java.util.stream
+
+class called Stream
+
+pipelining:-most of the stream operation returns a stream itselfs so that their results can be pipelined.These operations are called intermediate operations and their function is to take input and process them and return output to the target.
+
+collect() method is a terminal operation which is normally present at the end of the pipeling operation to mark the end of the stream. 
+
+automatic iteration:A stream operation do the iteration internally over the source elements provided in contrast to collections where explicit iteration is required
+----------------------------------------------------------------------------------
+Parallel streams
+
+Before Java 8 we were supposed to write multithreaded java code so that more data can be processed at a time and application performance is faster.
+
+But from jdk1.8 onwards there is a new api called parallel stream which we can create from a list,set or any kind of collection and that will spwan internally multiple threads which depends upon the api itself and that will process data and makes use of multicore processor so that processing of data will be very fast.
+

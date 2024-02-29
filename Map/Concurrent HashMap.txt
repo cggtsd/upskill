@@ -1,0 +1,31 @@
+Concurrent Modification
+--------------------------
+when one or more thread is iterating over the collection in between one thread changes the structure of collection either adding the elements to the collection or by deleting the elements in the collection or by updating the value at particualr position in the collection is known as concurrent modification.
+Fail Fast Iterator:-
+while iterating through the collection instantly throws ConcurrentModificationException if there is a structural modification of collection.Thus in case of concurrent modification the iterator fails quickly and cleanly rather than risking arbitary non deterministic behavior at the undetermined time in the future.It is good to have ConcurrentModificationException ehile iterating rather than showing unrealistic behavior in the future.
+Single Threaded Environment after the creation of iterator a structure is modified at any time by any method other than iterator's own  remove method
+Multiple Threaded Environment if one thread is modifying the structure of collection while other thread is iterating over it we have chance to get ConcurrentModificationException.
+
+Iterator reads internal data structure directly .The internal data structure should not be modified while iterating through the collection.To ensure this it maintains an internal flag that is nodes.Iterator checks the internal flag nodes whenever it gets the next value using hasNext() method which is available in the Iterator itself.Value of the flag changes whenevr there is structural modification thus indicating iterator to throw ConcurrentModificationException.
+
+Fail Safe Iterator makes a copy of internal data structure and iterates over the copy data structure.Any modification done to the iterator affects the copied data structure.So original data structure remains structurally unchanged.No ConcurrentModificationException thrown by fail safe iterator.
+
+
+Concurrent HashMap
+--------------------
+Difference between HashMap and ConcurrentHashMap
+1.ConcurrentHashMap was added in Java 5
+as an alternative to Hashtable to improve
+the performance of key-value data structure.
+
+On the other hand HashMap which is not synchronized provides better performance but it is not thread safe
+Concurrent HashMap is thread safe and is fit for use in multithreaded environment where as
+HashMap is not thread safe
+HashMap can be synchronized using a utility method synchronizedMap() which is available in the
+utility class called Collection which synchronizes all the methods of HashMap and effectively
+reduces the performance of data structure where one thread can enter at a time.
+In ConcurrentHashMap synchronization is done little differently rather than locking every method on a common lock.ConcurrentHashMap uses seperate lock for seperate buckets then locking only a portion of map.
+In ConcurrentHashMap performance is further improved by providing read access concurrently
+without any blocking.Read access operations do not generally block.
+It may overlap with update operation like put() or remove() method.
+Final difference like the iterator provided by HashMap is fail safe which means it will not throw ConcurrentModificationException if the underlying data structure is changed during iteration.
